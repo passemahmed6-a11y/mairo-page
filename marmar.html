@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>ميرو - حبيبة القلب</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #ffc0cb;
+      background-image: radial-gradient(circle at 30% 40%, #ffe4ec 0%, #ffb6c1 80%);
+      font-family: 'Segoe UI', 'Cairo', Tahoma, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .magic-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .floating-heart {
+      position: absolute;
+      color: #ff3b6f;
+      font-size: 2.5rem;
+      opacity: 0.4;
+      filter: drop-shadow(0 0 25px #ff6492);
+      animation: floatAround 18s infinite linear;
+      user-select: none;
+    }
+
+    @keyframes floatAround {
+      0% { transform: translateY(110vh) rotate(0deg) scale(0.5); opacity: 0.1; }
+      20% { opacity: 0.7; }
+      80% { opacity: 0.5; }
+      100% { transform: translateY(-20vh) rotate(720deg) scale(1.5); opacity: 0; }
+    }
+
+    .star-pink {
+      position: absolute;
+      background: #ffb3c6;
+      border-radius: 50%;
+      box-shadow: 0 0 30px #ffa5b9, 0 0 60px #ff7a9e;
+      opacity: 0.6;
+      animation: sparkle 3s infinite alternate;
+    }
+
+    @keyframes sparkle {
+      0% { opacity: 0.2; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.4); }
+    }
+
+    .romance-card {
+      position: relative;
+      z-index: 15;
+      max-width: 480px;
+      width: 100%;
+      background: rgba(255, 230, 240, 0.3);
+      backdrop-filter: blur(20px) saturate(200%);
+      -webkit-backdrop-filter: blur(20px) saturate(200%);
+      border: 3px solid #ffb3c6;
+      border-radius: 70px 70px 70px 70px;
+      box-shadow: 0 30px 50px #ff4d6e, 0 0 80px #ffb6c1, 0 0 20px #ffffff inset;
+      padding: 35px 20px 40px;
+      transition: 0.3s;
+    }
+
+    .main-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .main-title h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: linear-gradient(145deg, #a1004b, #ff3377, #ff99bb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 40px #ffb7c5, 0 0 20px #ffffff;
+      line-height: 1.4;
+      font-family: 'Cairo', 'Arial', sans-serif;
+    }
+
+    .main-title h1 i {
+      font-size: 2.7rem;
+      color: #ff4d88;
+      margin: 0 8px;
+      filter: drop-shadow(0 0 15px red);
+    }
+
+    .sub-hearts {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .sub-hearts i {
+      color: #ffb0c3;
+      font-size: 1.8rem;
+      filter: drop-shadow(0 0 20px #ff5982);
+      animation: pop 1.5s infinite;
+    }
+
+    .sub-hearts i:nth-child(2) { animation-delay: 0.3s; }
+    .sub-hearts i:nth-child(3) { animation-delay: 0.7s; }
+
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.4); text-shadow: 0 0 30px hotpink; }
+    }
+
+    .avatar-pink {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0 20px;
+    }
+
+    .heart-big {
+      background: #ff5982;
+      width: 120px;
+      height: 120px;
+      border-radius: 60% 40% 60% 40%;
+      transform: rotate(45deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 40px #ff2b5a, 0 0 100px #ff9ebb;
+      animation: heartBeat 1.9s infinite;
+    }
+
+    .heart-big i {
+      transform: rotate(-45deg);
+      font-size: 4.5rem;
+      color: #ffeef5;
+      text-shadow: 0 0 30px white;
+    }
+
+    @keyframes heartBeat {
+      0% { transform: rotate(45deg) scale(1); }
+      25% { transform: rotate(45deg) scale(1.2); }
+      40% { transform: rotate(45deg) scale(1); }
+      60% { transform: rotate(45deg) scale(1.15); }
+      100% { transform: rotate(45deg) scale(1); }
+    }
+
+    .romantic-paragraph {
+      background: rgba(255, 220, 240, 0.6);
+      border-radius: 50px;
+      padding: 22px 18px;
+      margin: 20px 0 25px;
+      border: 3px solid #ff99bb;
+      color: #9f0045;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-align: center;
+      box-shadow: 0 0 60px #ffa0c0;
+      font-family: 'Cairo', sans-serif;
+      backdrop-filter: blur(4px);
+      line-height: 1.8;
+      direction: rtl;
+    }
+
+    .romantic-paragraph i {
+      color: #ff3b6f;
+      margin: 0 5px;
+    }
+
+    .buttons-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin: 20px 0 25px;
+    }
+
+    .crazy-btn {
+      background: linear-gradient(145deg, #ff1a4c, #ff7096);
+      border: 4px solid #ffd9e6;
+      border-radius: 120px;
+      padding: 18px 10px;
+      width: 100%;
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-shadow: 0 4px 10px #64002b;
+      box-shadow: 0 25px 30px #b3003b, 0 0 90px #ff99cc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      transition: 0.2s;
+      cursor: pointer;
+      border: 3px solid #ffe2f0;
+      font-family: 'Cairo', 'Arial', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .crazy-btn i {
+      font-size: 2.2rem;
+      color: #fff0f5;
+      filter: drop-shadow(0 0 10px darkred);
+      animation: wiggle 1.2s infinite;
+    }
+
+    @keyframes wiggle {
+      0%,100% { transform: rotate(0deg); }
+      25% { transform: rotate(15deg); }
+      75% { transform: rotate(-15deg); }
+    }
+
+    .crazy-btn:hover {
+      background: linear-gradient(145deg, #ff3777, #ff99bb);
+      transform: scale(1.02);
+      box-shadow: 0 30px 50px #c50042, 0 0 120px #ffb6c1;
+    }
+
+    .snfoora-btn {
+      background: linear-gradient(145deg, #d9416d, #f55f8d);
+      border: 4px solid #ffe6f0;
+      border-radius: 120px;
+      padding: 18px 10px;
+      width: 100%;
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #fffff0;
+      text-shadow: 0 4px 10px #4d0024;
+      box-shadow: 0 25px 30px #9f2b55, 0 0 80px #ff99bb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      transition: 0.2s;
+      cursor: pointer;
+      border: 3px solid #ffe2f0;
+      font-family: 'Cairo', 'Arial', sans-serif;
+    }
+
+    .snfoora-btn i {
+      font-size: 2.2rem;
+      color: #fff0f5;
+      filter: drop-shadow(0 0 10px #ad1457);
+      animation: pulse 1.4s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); text-shadow: 0 0 30px white; }
+    }
+
+    .snfoora-btn:hover {
+      background: linear-gradient(145deg, #ff6090, #ff87a8);
+      transform: scale(1.02);
+    }
+
+    .message-area {
+      position: relative;
+      width: 100%;
+      min-height: 90px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      padding: 10px 5px;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    .single-heart-message {
+      background: #ff80a5;
+      color: white;
+      font-weight: bold;
+      padding: 16px 32px;
+      border-radius: 80px;
+      font-size: 1.8rem;
+      box-shadow: 0 15px 35px #ff2956, 0 0 70px #ffb3c6;
+      border: 3px solid white;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      transform: scale(0);
+      animation: popIn 0.5s forwards;
+      font-family: 'Cairo', sans-serif;
+      direction: rtl;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0) rotate(0deg); opacity: 0; }
+      70% { transform: scale(1.2) rotate(3deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    .love-message-big {
+      background: #ff4d7a;
+      color: #fff0f5;
+      padding: 22px 35px;
+      border-radius: 120px;
+      font-size: 2.2rem;
+      font-weight: 900;
+      text-align: center;
+      box-shadow: 0 20px 40px #b81c4b, 0 0 100px #ffb7c5;
+      border: 4px solid white;
+      transform: scale(0);
+      animation: popIn 0.6s forwards;
+      font-family: 'Cairo', sans-serif;
+      line-height: 1.5;
+      direction: rtl;
+    }
+
+    .footer-note {
+      color: #ff3777;
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="magic-bg" id="magicBg"></div>
+
+  <!-- الأغنية -->
+  <audio id="romanticSong" loop preload="auto">
+    <source src="https://tmpfiles.org/dl/26106788/yb_ajw1jjis.mp3" type="audio/mpeg">
+    متصفحك لا يدعم تشغيل الصوت
+  </audio>
+
+  <div class="romance-card">
+    <div class="main-title">
+      <h1>
+        <i class="fas fa-heart"></i> يـا حـبـيـبـة قـلـبـي <i class="fas fa-heart"></i>
+      </h1>
+      <h1 style="font-size: 2.8rem; margin-top: -5px;">وقـرة عـيـنـي</h1>
+      <h1 style="font-size: 3.8rem; color: #ff2052; text-shadow: 0 0 60px red; margin-top: -5px;">مـيـرو</h1>
+      <div class="sub-hearts">
+        <i class="fas fa-heart"></i><i class="fas fa-heart"></i><i class="fas fa-heart"></i><i class="fas fa-heart"></i>
+      </div>
+    </div>
+
+    <div class="avatar-pink">
+      <div class="heart-big">
+        <i class="fas fa-heart"></i>
+      </div>
+    </div>
+
+    <!-- النص الرومانسي الطويل -->
+    <div class="romantic-paragraph">
+      <i class="fas fa-heart"></i> ميرو روح قلبي <i class="fas fa-heart"></i><br>
+      حبيتك بكل تفاصيلك<br>
+      ربنا يديمك ليا ويديم وجودك في حياتي<br>
+      حقك عليا من كل حاجه زعلتك مني<br>
+      انتي حبيبتي وصحبتي وبنتي وكل دنيتي
+    </div>
+
+    <div class="buttons-container">
+      <button class="crazy-btn" id="ozzaBtn">
+        <i class="fas fa-heart-circle-plus"></i>
+        دوسي هنا يا اوزعة
+        <i class="fas fa-heart-circle-exclamation"></i>
+      </button>
+
+      <button class="snfoora-btn" id="snfooraBtn">
+        <i class="fas fa-star"></i>
+        دوسي هنا ياسنفورة
+        <i class="fas fa-star"></i>
+      </button>
+    </div>
+
+    <div class="message-area" id="messageArea"></div>
+
+    <div class="footer-note">
+      <i class="fas fa-heart"></i> <i class="fas fa-heart"></i> <i class="fas fa-heart"></i>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // خلفية متحركة
+      const bg = document.getElementById('magicBg');
+      for (let i = 0; i < 35; i++) {
+        let heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        const heartsArray = ['❤️', '💖', '💗', '💓', '💕', '🌸', '🌺', '💞'];
+        heart.innerHTML = heartsArray[Math.floor(Math.random() * heartsArray.length)];
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDuration = (10 + Math.random() * 25) + 's';
+        heart.style.fontSize = (1.8 + Math.random() * 4) + 'rem';
+        heart.style.animationDelay = (Math.random() * -10) + 's';
+        bg.appendChild(heart);
+      }
+      for (let i = 0; i < 40; i++) {
+        let star = document.createElement('div');
+        star.className = 'star-pink';
+        star.style.width = (2 + Math.random() * 8) + 'px';
+        star.style.height = star.style.width;
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.animationDelay = (Math.random() * 5) + 's';
+        star.style.animationDuration = (2 + Math.random() * 5) + 's';
+        bg.appendChild(star);
+      }
+
+      // عناصر التفاعل
+      const ozzaBtn = document.getElementById('ozzaBtn');
+      const snfooraBtn = document.getElementById('snfooraBtn');
+      const messageArea = document.getElementById('messageArea');
+      const audio = document.getElementById('romanticSong');
+      
+      let isPlaying = false;
+
+      // الزر الأول
+      ozzaBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        ozzaBtn.style.transform = 'scale(0.95)';
+        setTimeout(() => ozzaBtn.style.transform = 'scale(1)', 150);
+        
+        messageArea.innerHTML = '';
+
+        const heartMsg = document.createElement('div');
+        heartMsg.className = 'single-heart-message';
+        heartMsg.innerHTML = '<i class="fas fa-heart" style="color: white;"></i> انتي كل دنيتي <i class="fas fa-heart" style="color: white;"></i>';
+        messageArea.appendChild(heartMsg);
+
+        setTimeout(() => {
+          if (heartMsg.parentNode) {
+            heartMsg.style.transition = 'opacity 0.5s, transform 0.5s';
+            heartMsg.style.opacity = '0';
+            heartMsg.style.transform = 'scale(0.3)';
+            setTimeout(() => {
+              if (heartMsg.parentNode) heartMsg.remove();
+            }, 600);
+          }
+        }, 2800);
+      });
+
+      // الزر الثاني
+      snfooraBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        snfooraBtn.style.transform = 'scale(0.95)';
+        setTimeout(() => snfooraBtn.style.transform = 'scale(1)', 150);
+
+        messageArea.innerHTML = '';
+        const loveMsg = document.createElement('div');
+        loveMsg.className = 'love-message-big';
+        loveMsg.innerHTML = '💗 بحبك اوي 💗<br> بحبك اكتر من نفسي 💗';
+        messageArea.appendChild(loveMsg);
+
+        // تعديل المدة هنا لـ 25 ثانية (25000 ملي ثانية)
+        setTimeout(() => {
+          if (loveMsg.parentNode) {
+            loveMsg.style.transition = 'opacity 0.6s, transform 0.6s';
+            loveMsg.style.opacity = '0';
+            loveMsg.style.transform = 'scale(0.2)';
+            setTimeout(() => {
+              if (loveMsg.parentNode) loveMsg.remove();
+            }, 700);
+          }
+        }, 25000); // 25 ثانية
+
+        // تشغيل الأغنية
+        if (!isPlaying) {
+          audio.play().catch(e => {
+            console.log('مشكلة في التشغيل', e);
+          });
+          isPlaying = true;
+        }
+      });
+
+      audio.addEventListener('ended', function() {
+        isPlaying = false;
+      });
+
+    })();
+  </script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;700;900&display=swap" rel="stylesheet">
+</body>
+</html>
